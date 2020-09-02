@@ -7,7 +7,7 @@
 % DOCUMENT DEFINITION
 %------------------------------
 \documentclass[11pt,A4]{article}
-\usepackage{blindtext}
+\usepackage{randomstring}
 
 %------------------------------
 % ENCODING
@@ -172,14 +172,7 @@
 %-------------------------
 % CV EVENT
 %-------------------------
-% creates a stretched box as cv entry headline followed by two paragraphs about 
-% the work you did
-% param 1:	event time i.e. 2014 or 2011-2014 etc.
-% param 2:	event name (what did you do?)
-% param 3:	institution (where did you work / study)
-% param 4:	what was your position
-% param 5:	some words about your contributions
-%
+
 \newcommand{\cvevent}[3]
 {
 
@@ -220,6 +213,138 @@
 
 %use our custom fancy header definitions
 \pagestyle{fancy}
-\blindtext
+%-------------------------
+% TITLE HEADLINE
+%-------------------------
+\vspace{-8pt}
+\begin{center}
+    \HUGE   \textsc{Abc Qwerty}
+            \textcolor{sectcol}{\rule[-1mm]{1mm}{0.9cm}}
+            \textsc{Resume}\\[2pt]
+	\small  \randomstring
+\end{center}
+
+\vspace{6pt}
+
+%-------------------------
+% META SECTION
+%-------------------------
+\metasection{\randomstring}{\textbf{Status:} \randomstring}
+\metasection{\randomstring}{\textbf{Fields:} \randomstring} 
+\metasection{\randomstring}{}
+\vspace{-2pt}
+\textcolor{softcol}{\hrule}
+\vspace{6pt}
+
+\normalsize
+
+
+%==================================================
+% CV SECTIONS AND EVENTS (MAIN CONTENT)
+%==================================================
+
+%-------------------------
+% EDUCATION SECTION
+%-------------------------
+\cvsection{EDUCATION}
+
+\cvevent{MAY 2021}
+        {Graduated as M.A. in Mathematics}
+        {University of Wisconsin–Madison}
+
+        $\cdot$ \randomstring\\
+        $\cdot$ \randomstring \\
+
+\cvevent{SEP 2019 - MAY 2020}
+        {Semester Abroad}
+        {University of Wisconsin–Madison}
+        $\cdot$ \randomstring\\
+        $\cdot$ \randomstring \\
+
+\cvevent{SEP 2016 - MAY 2019}
+        {Graduated as B.S. in Statistics (MAY 2020)}
+        {Nanjing University}
+
+        $\cdot$ \randomstring
+        $\cdot$ \randomstring\\
+
+
+%-------------------------
+% RESEARCH SECTION
+%-------------------------
+\cvsection{RESEARCH}
+
+\cvevent{Sep 2018 – Dec 2018}
+        {NANJING UNIVERSITY FINANCIAL INNOVATION LAB}
+        {Nanjing, JS, China}
+
+        $\cdot$ \randomstring\\
+        $\cdot$ \randomstring.\\
+        $\cdot$ \randomstring.\\
+        $\cdot$ \randomstring.\\
+        $\cdot$ \randomstring\\
+
+\cvevent{Feb 2018}
+        {INTERDISCIPLINARY CONTEST IN MODELING}
+        {Nanjing, JS, China}
+
+        $\cdot$ \randomstring.\\
+        $\cdot$ \randomstring\\
+        $\cdot$ \randomstring\\
+        $\cdot$ \randomstring.\\
+
+
+
+%-------------------------
+% EXPERIENCE SECTION
+%-------------------------
+\cvsection{EXPERIENCE}
+\cvevent{NOV 2020}
+        {TRANSLATOR}
+        {University of Wisconsin–Madison}
+
+        $\cdot$ \randomstring.\\
+        $\cdot$ \randomstring.\\
+        $\cdot$ \randomstring.\\
+
+
+\newpage
+
+
+%-------------------------
+% COURSEWORK HIGHLIGHTS
+%-------------------------
+\cvsection{COURSEWORK HIGHLIGHTS}
+\vspace{-18pt}
+\textcolor{softcol}{\hrule}
+\vspace{6pt}
+
+\textbf{Mathematics}
+\randomstring\\
+
+\textbf{Statistics}
+\randomstring\\
+
+\textbf{Computer Science}
+\randomstring\\
+
+
+%-------------------------
+% SKILLS
+%-------------------------
+\cvsection{SKILLS}
+\vspace{-18pt}
+\textcolor{softcol}{\hrule}
+\vspace{6pt}
+
+\textbf{PROGRAMMING}\\
+\randomstring\\
+\randomstring\\
+\textit{Familiar:}
+\randomstring\\
+
+\textbf{SPOKEN \& WRITTEN}\\
+Fluent: English \\
+Native: Chinese\\
 
 \end{document}
