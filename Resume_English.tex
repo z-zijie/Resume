@@ -1,0 +1,376 @@
+%------------------------------
+% Resume in Latex
+% Author : Zijie Zhang
+%------------------------------
+
+%------------------------------
+% DOCUMENT DEFINITION
+%------------------------------
+\documentclass[11pt,A4]{article}	
+
+
+%------------------------------
+% ENCODING
+%------------------------------
+%we use utf8 since we want to build from any machine
+\usepackage[utf8]{inputenc}
+
+
+%------------------------------
+% FONT
+%------------------------------
+% \usepackage{helvet}
+\usepackage[default]{raleway}
+
+% set font default
+\renewcommand*\familydefault{\sfdefault} 	
+\usepackage[T1]{fontenc}
+
+% more font size definitions
+\usepackage{moresize}
+
+
+%------------------------------
+% PAGE LAYOUT DEFINITIONS
+%------------------------------
+\usepackage[a4paper]{geometry}
+\geometry{top=1.25cm, bottom=-.6cm, left=1.5cm, right=1.5cm}
+
+%use customized header
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+%less space between header and content
+\setlength{\headheight}{-5pt}
+
+%indentation is zero
+\setlength{\parindent}{0mm}
+
+
+%------------------------------
+% TABLE/ARRAY DEFINITIONS
+%------------------------------
+%for layouting tables
+\usepackage{multicol}
+\usepackage{multirow}
+
+%extended aligning of tabular cells
+\usepackage{array}
+
+\newcolumntype{x}[1]{%
+>{\raggedleft\hspace{0pt}}p{#1}}%
+
+
+%------------------------------
+% GRAPHICS DEFINITIONS
+%------------------------------
+%for header image
+\usepackage{graphicx}
+
+%for floating figures
+\usepackage{wrapfig}
+\usepackage{float}
+
+%for drawing graphics
+\usepackage{tikz}
+\usetikzlibrary{shapes, backgrounds,mindmap, trees}
+
+
+%------------------------------
+% COLOR DEFINITIONS
+%------------------------------
+\usepackage{color}
+
+%accent color
+\definecolor{sectcol}{RGB}{0,150,255}
+
+%dark background color
+\definecolor{bgcol}{RGB}{110,110,110}
+
+%light background / accent color
+\definecolor{softcol}{RGB}{225,225,225}
+
+
+%==================================================
+% DEFINITIONS
+%==================================================
+
+%-------------------------
+% HEADER
+%-------------------------
+% remove top header line
+\renewcommand{\headrulewidth}{0pt}
+
+%remove botttom header line
+\renewcommand{\footrulewidth}{0pt}
+
+%remove pagenum
+\renewcommand{\thepage}{}
+
+%remove section num
+\renewcommand{\thesection}{}
+
+
+%-------------------------
+% ARROW GRAPHICS in Tikz
+%-------------------------
+% a six pointed arrow poiting to the left
+\newcommand{\tzlarrow}
+    {(0,0) -- (0.2,0) -- (0.3,0.2) -- (0.2,0.4) -- (0,0.4) -- (0.1,0.2) -- cycle;}	
+
+% include the left arrow into a tikz picture
+% param1: fill color
+%
+\newcommand{\larrow}[1]
+{
+\begin{tikzpicture}[scale=0.58]
+    \filldraw[fill=#1!100,draw=#1!100!black]  \tzlarrow
+\end{tikzpicture}
+}
+
+% a six pointed arrow poiting to the right
+\newcommand{\tzrarrow}
+    { (0,0.2) -- (0.1,0) -- (0.3,0) -- (0.2,0.2) -- (0.3,0.4) -- (0.1,0.4) -- cycle;}
+
+% include the right arrow into a tikz picture
+% param1: fill color
+%
+\newcommand{\rarrow}
+{
+\begin{tikzpicture}[scale=0.7]
+	\filldraw[fill=sectcol!100,draw=sectcol!100!black] \tzrarrow
+\end{tikzpicture}
+}
+
+
+%-------------------------
+% CUSTOM SECTIONS
+%-------------------------
+% create a coloured box with arrow and title as cv section headline
+% param 1: section title
+%
+\newcommand{\cvsection}[1]
+{
+	\begin{center}
+		\large\textcolor{sectcol}{\textbf{#1}}
+	\end{center}
+}
+
+%create a coloured arrow with title as cv meta section section
+% param 1: meta section title
+%
+\newcommand{\metasection}[2]
+{
+%\begin{tabular*}{1\textwidth}{r r}
+\footnotesize{#2} \hspace*{\fill} \footnotesize{#1}\\[1pt]
+%\end{tabular*}
+}
+
+
+%-------------------------
+% CV EVENT
+%-------------------------
+% creates a stretched box as cv entry headline followed by two paragraphs about 
+% the work you did
+% param 1:	event time i.e. 2014 or 2011-2014 etc.
+% param 2:	event name (what did you do?)
+% param 3:	institution (where did you work / study)
+% param 4:	what was your position
+% param 5:	some words about your contributions
+%
+\newcommand{\cvevent}[3]
+{
+
+\begin{tabular*}{1\textwidth}{p{13.6cm}  x{3.9cm}}
+	\textbf{#2} - \textcolor{bgcol}{#3} &   \vspace{2.5pt}\textcolor{sectcol}{#1}
+\end{tabular*}
+
+\vspace{-8pt}
+\textcolor{softcol}{\hrule}
+\vspace{6pt}
+
+    % $\cdot$ #4\\[3pt]
+    % $\cdot$ #5\\[6pt]
+
+}
+
+% creates a stretched box as 
+\newcommand{\cveventmeta}[2]
+{
+	\mbox{\mystrut \hspace{87pt}\textit{#1}}\\
+	#2
+}
+
+%-------------------------
+% CUSTOM STRUT FOR EMPTY BOXES
+%-------------------------
+\newcommand{\mystrut}{\rule[-.3\baselineskip]{0pt}{\baselineskip}}
+
+
+
+
+%==================================================
+% DOCUMENT CONTENT
+%==================================================
+
+\begin{document}
+
+
+%use our custom fancy header definitions
+\pagestyle{fancy}
+
+%-------------------------
+% TITLE HEADLINE
+%-------------------------
+\vspace{-8pt}
+\begin{center}
+    \HUGE   \textsc{Zijie Zhang}
+            \textcolor{sectcol}{\rule[-1mm]{1mm}{0.9cm}}
+            \textsc{Resume}\\[2pt]
+	\small  Intention: \textit{Research, Machine Learning}
+\end{center}
+
+\vspace{6pt}
+
+%-------------------------
+% MEAT SECTION
+%-------------------------
+\metasection{Madison, WI, United States}{\textbf{Status:} M.A. in Mathematics, Postgraduate}
+\metasection{github.com/z-zijie}{\textbf{Fields:} Machine Learning, Computational mathematics, Data Science} 
+\metasection{z.zijie@outlook.com}{}
+% \metasection{+1 608-949-4685}{}
+\vspace{-2pt}
+\textcolor{softcol}{\hrule}
+\vspace{6pt}
+
+\normalsize
+
+%-------------------------
+% SUMMARAY (optional)
+%-------------------------
+% \vspace{-6pt}
+% \cvsection{Summary}
+% Digital media graduate with project experience in the field of technology based assessment.
+% Currently working as IT Consultant at We4IT, 
+% Bremen in the field of IBM Notes Domino and XPages applications. 
+% Master studies focused on teams from different disciplines 
+% and cultural backgrounds on solutions for complex problems.\\
+
+
+%==================================================
+% CV SECTIONS AND EVENTS (MAIN CONTENT)
+%==================================================
+
+%-------------------------
+% EDUCATION SECTION
+%-------------------------
+\cvsection{EDUCATION}
+
+\cvevent{MAY 2021}
+        {Graduated as M.A. in Mathematics}
+        {University of Wisconsin–Madison}
+
+        $\cdot$ Interest in Computational mathematics, Data Science, Machine Learning and Stochastic Analysis\\
+        $\cdot$ GPA: 3.88/4.0 \\
+
+\cvevent{SEP 2019 - MAY 2020}
+        {Semester Abroad}
+        {University of Wisconsin–Madison}
+        $\cdot$ Interest in Applied mathematics and Statistical Learning\\
+        $\cdot$ GPA: 3.375/4.0 \\
+
+\cvevent{SEP 2016 - MAY 2019}
+        {Graduated as B.S. in Statistics (MAY 2020)}
+        {Nanjing University}
+
+        $\cdot$ GPA.Cumulative: 3.95/5
+        $\cdot$ GPA.Major: 3.91/5\\
+
+
+%-------------------------
+% RESEARCH SECTION
+%-------------------------
+\cvsection{RESEARCH}
+
+\cvevent{Sep 2018 – Dec 2018}
+        {NANJING UNIVERSITY FINANCIAL INNOVATION LAB}
+        {Nanjing, JS, China}
+
+        $\cdot$ HEAD UNDERGRAD RESEARCH\\
+        $\cdot$ This was a research experience about Algorithm design in Blockchain topic.\\
+        $\cdot$ Designed a conjugated routing and account balancing algorithm for
+                high-speed transaction as a team member, and articulated a paper.\\
+        $\cdot$ Implemented simulation and numerical optimization with MATLAB on Tianhe HPC, 
+                making success rate over 90\%.\\
+        $\cdot$ A paper produced by this project (including me), 
+                ”Photon State-Channel Architecture with AI Routing Optimization”, 
+                has been accepted by the 2018 CCF Blockchain conference.\\
+
+\cvevent{Feb 2018}
+        {INTERDISCIPLINARY CONTEST IN MODELING}
+        {Nanjing, JS, China}
+
+        $\cdot$ Designed a model to decide the number,
+                distribution and timeline of Tesla destination charging 
+                and supercharging stations.\\
+        $\cdot$ Use the Queuing Model to figure out the relationship between 
+                the expected waiting time and arrival rate.\\
+        $\cdot$ A Linear Regression Model was used to predict the number of electric vehicles.\\
+        $\cdot$ A paper produced by this project was awarded the Honorable Mention in ICM.\\
+
+
+
+%-------------------------
+% EXPERIENCE SECTION
+%-------------------------
+\cvsection{EXPERIENCE}
+\cvevent{NOV 2020}
+        {TRANSLATOR}
+        {University of Wisconsin–Madison}
+
+        $\cdot$ Provide interpretation services for Nanjing University delegation.\\
+        $\cdot$ Participated and interpreted the biomedical cancer detection 
+                technology exchange meeting with Exact Sciences.\\
+        $\cdot$ Accompanied to visit Discovery Building, Research institute in Madison, Wisconsin.\\
+
+
+%-------------------------
+% COURSEWORK HIGHLIGHTS
+%-------------------------
+\cvsection{COURSEWORK HIGHLIGHTS}
+\vspace{-18pt}
+\textcolor{softcol}{\hrule}
+\vspace{6pt}
+
+\textbf{Mathematics}
+Real Analysis \textbullet{} Complex Analysis \textbullet{} Functional Analysis \\
+Methods of Applied Mathematics I \& II \textbullet{} Methods of Computational Mathematics I \& II \\
+Operations Research \textbullet{} Modern Algebra \textbullet{} Topics in Applied Math\\
+
+\textbf{Statistics}
+Statistical Learning \textbullet{} Stochastic Processe \textbullet{} Mathematical Statistics \\
+Multivariate Statistical Analysis \textbullet{} Time Series Analysis \textbullet{} Risk Statistics\\
+
+\textbf{Computer Science}
+Pattern Recognition \textbullet{} Data Mining \textbullet{} Machine Learning\\
+
+
+%-------------------------
+% SKILLS
+%-------------------------
+\cvsection{SKILLS}
+\vspace{-18pt}
+\textcolor{softcol}{\hrule}
+\vspace{6pt}
+
+\textbf{PROGRAMMING}\\
+Python \textbullet{} Matlab \textbullet{} C \textbullet{} C++ \textbullet{} \LaTeX\ \\
+R \textbullet{} Shell \textbullet{} Fortran(w/ mpi) \textbullet{} Octave\\
+\textit{Familiar:}
+Java \textbullet{} Assembly \textbullet{} MySQL\\
+
+\textbf{SPOKEN \& WRITTEN}\\
+Fluent: English \\
+Native: Chinese\\
+
+\end{document}
