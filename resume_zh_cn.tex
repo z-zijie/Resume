@@ -1,20 +1,198 @@
-%------------------------------
-% Resume in Latex
-% Author : Zijie Zhang
-%------------------------------
+\documentclass[11pt]{article}
 
-%------------------------------
-% DOCUMENT DEFINITION
-%------------------------------
-\documentclass[UTF8,A4]{ctexart}
+% --- Modify margins --- %
+\usepackage{geometry}
+\geometry{a4paper,scale=0.8}
 
+% --- Set English Font --- %
+% \renewcommand{\familydefault}{\sfdefault}
+% --- Set Chinese Font --- %
+\usepackage{xeCJK}
+% \setCJKfamilyfont{yh}{Microsoft YaHei}                    %微软雅黑 yh
+% \newcommand{\yh}{\CJKfamily{yh}}
 
-%------------------------------
-% ENCODING
-%------------------------------
-%we use utf8 since we want to build from any machine
-\usepackage[utf8]{inputenc}
+% --- Involved packages --- %
+\usepackage[T1]{fontenc}
+\usepackage{linespacing_fix}
+\usepackage{url}
+
+% disable indent globally
+\setlength{\parindent}{0pt}
+% some general improvements, defines the XeTeX logo
+\RequirePackage{xltxtra}
+% use xifthen
+\RequirePackage{xifthen}
+
+\RequirePackage{titlesec}
+\RequirePackage{enumitem}
+\setlist{noitemsep} % removes spacing from items but leaves space around the whole list
+%\setlist{nosep} % removes all vertical spacing within and around the list
+\setlist[itemize]{topsep=0.25em, leftmargin=1.5pc}
+\setlist[enumerate]{topsep=0.25em, leftmargin=1.5pc}
+\RequirePackage[super]{nth}
+
+\titleformat{\section}              % Customise the \section command 
+    {\Large\scshape\raggedright}    % Make the \section headers large (\Large),
+                                    % small capitals (\scshape) and left aligned (\raggedright)
+    {}{0em}                      % Can be used to give a prefix to all sections,    like 'Section ...'
+    {}                           % Can be used to insert code before the heading
+    [\titlerule]                 % Inserts a horizontal line after the heading
+\titlespacing*{\section}{0cm}{*1}{*1}
+
+\titleformat{\subsection}
+    {\large\raggedright}
+    {}{0em}
+    {}
+\titlespacing*{\subsection}{0cm}{*1}{*0.5}
+
+\newcommand{\datedsection}[2]{%
+    \section[#1]{#1 \hfill #2}%
+}
+\newcommand{\datedsubsection}[2]{%
+    \subsection[#1]{#1 \hfill #2}%
+}
+\newcommand{\datedline}[2]{%
+    {\par #1 \hfill #2 \par}%
+}
+
+\newcommand{\name}[1]{
+    \centerline{\Huge\scshape\textbf{#1}}
+    \vspace{1.2ex}
+}
+\newcommand{\contactInfo}[3]{
+    \centerline{
+        \sffamily\large{
+            \ 手机：{#1} \textperiodcentered
+            \ 邮箱：{#2} \textperiodcentered
+            \ {Github}：\normalsize\url{#3}
+            }
+        } 
+    \vspace{1.2ex}
+}
+\newcommand{\otherInfo}[4]{
+    \centerline{\sffamily\large{\ {#1}}
+    \ifthenelse{\isempty{#2}}%
+        { } % if {#2} is empty
+    {\textperiodcentered\ \ {#2} } % homepage, no space before \text...
+    \ifthenelse{\isempty{#3}}%
+        { } % if {#3} is empty
+        {\textperiodcentered\ \ {#3} } % homepage, no space before \text...
+    \ifthenelse{\isempty{#4}}%
+        { } % if {#3} is empty
+        {\textperiodcentered\ \ {#4} }
+    }
+    \vspace{0.7ex}
+}
+\newcommand{\role}[2]{
+    {\par \textit{#1} ~ #2 \par}
+    \vspace{0.5ex}
+}
 
 \begin{document}
-    hello
+
+% personal information
+\name{张子杰}
+\contactInfo{+86 188-5182-2129}{z.zijie@outlook.com}{https://github.com/z-zijie}
+% \contactInfo{+1 608-949-4685}{zijie.us@gmail.com}
+
+\section{\textbf{教育背景}}
+\datedsubsection{
+    \textbf{威斯康星大学麦迪逊分校},
+    \textit{应用数学-硕士}}
+    {2019.09 - 2021.05}
+    \begin{itemize} [parsep=1ex]
+        \item \textbf{University of Wisconsin-Madison}
+        \item GPA: 3.88/4.0
+    \end{itemize}
+
+\datedsubsection{
+    \textbf{南京大学},
+    \textit{统计学-学士（数学系）}}
+    {2016.09 - 2020.05}
+    \begin{itemize} [parsep=1ex]
+        \item GPA: 3.95/5.0, 前30\%.
+    \end{itemize}
+
+\hspace*{\fill}
+\section{\textbf{项目经历}}
+\datedsubsection{
+    \textbf{口罩识别},
+    \textit{机器学习}
+    (sklearn, pytorch)}
+    {2020.10 - 2020.12}
+    \begin{itemize} [parsep=1ex]
+        \item 使用\textbf{opencv}基于\textit{DNN}的人脸检测，对有口罩遮挡的人脸进行准确追踪。
+        \item 使用自建数据集，训练\textit{MaskDetector}分类器。
+        \item 个人项目
+    \end{itemize}
+
+\datedsubsection{
+    \textbf{泰坦尼克号幸存预测},
+    \textit{机器学习}}
+    {2020.09 - 2020.11}
+    \begin{itemize} [parsep=1ex]
+        \item \textbf{Kaggle Titanic}
+        \item 完全从零开始手写\textit{Linear Regression, Logistic Regression, Decision Trees, Nearest Neighbors, Naive Bayes, Support Vector Machines}等基础机器学习算法。
+        \item 比较各个算法优劣，优化\textit{Nearest Neighbors}搜索，对\textit{Decision Trees}进行预剪枝、后剪枝。
+        \item 个人项目，University of Wisconsin-Madison, COMP SCI 760, \textit{Prof.Daniel Pimentel-Alarcón}.
+    \end{itemize}
+
+\datedsubsection{
+    \textbf{Fortran MPI多线程计算}
+    }
+    {2019.09 - 2019.12}
+    \begin{itemize} [parsep=1ex]
+        \item 对流方程, 热传导方程等偏微分方程
+        \item \textbf{Heat equation, advection equation}
+        \item 计算数学，有限元
+        \item 主要使用的方法:\textit{Beam–Warming Method, Lax–Wendroff Method, Crank–Nicolson Method, Adams–Moulton Method}
+        \item 主要工具: \textbf{MATLAB, FORTRAN, OpenMPI, Python}.
+    \end{itemize}
+
+
+\hspace*{\fill}
+\section{\textbf{科研经历}}
+\datedsubsection{
+    \textbf{南京大学金融创新实验室}，
+    \textit{区块链算法设计}
+    }
+    {2018.09 - 2018.12}
+    \begin{itemize} [parsep=1ex]
+        \item 为高速交易设计了一个共轭routing和账户平衡算法.
+        \item 在\textit{Tianhe}超算上用MATLAB进行仿真和数值优化，使交易成功率超过90\%.
+        \item 为了提高计算效率，使用\textit{MEX C}，在MATLAB中使用C/C++加速.
+        \item 该项目的论文（三作），\textbf{Photon State-Channel Architecture with AI Routing Optimization}.
+    \end{itemize}
+
+
+% \hspace*{\fill}
+\section{\textbf{工作经历}}
+\datedsubsection{
+    \textbf{口译}，
+    \textit{会议翻译}
+    }
+    {2020.11}
+    \begin{itemize} [parsep=1ex]
+        \item 为\textbf{南京大学}代表团访问\textbf{威斯康星大学麦迪逊分校}提供口译服务。
+        \item 为与Exact Sciences生物医药癌症检测技术交流会参会者提供实时口译。
+        \item 陪同参观位于威斯康星州麦迪逊市的研究所Discovery Building，并提供即时翻译交流。
+    \end{itemize}
+
+
+% \hspace*{\fill}
+\section{\textbf{技能}}
+\begin{itemize} [parsep=1ex]
+    \item 编程语言: C/C++, Python, MATLAB, SQL, R, Fortran.
+    \item 排版系统: \LaTeX.
+    \item 平台: Linux, Windows.
+    \item 语言能力: 中文（母语）， 英文（流利）。
+\end{itemize}
+
+\section{\textbf{获奖情况}}
+\begin{itemize} [parsep=1ex]
+    \item Honorable Mention in ICM（美国大学生数学建模竞赛H奖）。
+    \item 2017全国大学生数学竞赛（数学组），二等奖。
+\end{itemize}
+
+
 \end{document}
