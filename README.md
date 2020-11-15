@@ -1,6 +1,6 @@
 # 简历
 
-[中文简历PDF](resume_zh_cn.pdf)
+[中文简历PDF](https://github.com/z-zijie/Resume/raw/master/resume_zh_cn.pdf)
 
 ## 简历内容
 
